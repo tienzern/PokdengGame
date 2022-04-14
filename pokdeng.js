@@ -68,7 +68,7 @@ const readline = require("readline").createInterface({
 let totalChip = 0;
 let betMoney = 0;
 
-const StartPokdeng = async () => {
+const startPokdeng = async () => {
   return new Promise(async (resolve, reject) => {
     readline.question("Please put your bet", async (bet) => {
       betMoney = bet;
@@ -88,17 +88,17 @@ const StartPokdeng = async () => {
       } else {
         console.log(`You tie!!!, gain 0 chips`);
       }
-      await ContinuePokdeng();
+      await continuePokdeng();
       resolve();
     });
   });
 };
 
-const ContinuePokdeng = async () => {
+const continuePokdeng = async () => {
   return new Promise(async (resolve, reject) => {
     readline.question("Wanna play more (Yes/No)?", async (answer) => {
       if (answer === "Yes") {
-        await StartPokdeng();
+        await startPokdeng();
       } else {
         console.log(`You got total ${totalChip} chips`);
         totalChip = 0;
@@ -109,7 +109,7 @@ const ContinuePokdeng = async () => {
 };
 
 const pokdeng = async () => {
-  await StartPokdeng();
+  await startPokdeng();
   readline.close();
 };
 
